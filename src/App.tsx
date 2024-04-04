@@ -7,6 +7,8 @@ import { AppDispatch, RootState, store } from './store/store';
 import { adminStore } from './store/adminStore';
 import AdminUserPage from './pages/admin/AdminUserPage';
 import { FavoriteFetch } from './store/features/FavoriteProductSlice';
+import LoginPage from './pages/LoginPage';
+import AuthGuard from './guards/AuthGuard';
 
 function App() {
 	const dispatch: AppDispatch = useDispatch();
@@ -30,7 +32,8 @@ function App() {
 							<Link to="/products">Products</Link>{' '}
 							<Link to="/favorite-products">Favorite Products</Link>{' '}
 							<Link to="/admin">Admin</Link>{' '}
-							<Link to="/admin/users">Admin Users</Link>
+							<Link to="/admin/users">Admin Users</Link>{' '}
+							<Link to="/login">Login Page</Link>
 						</nav>
 						<main>
 							<Provider store={store}>
@@ -49,18 +52,24 @@ function App() {
 					path: 'favorite-products',
 					Component: FavoriteProductsPage,
 				},
+				{
+					path: 'login',
+					Component: LoginPage,
+				},
 			],
 		},
 		{
 			path: 'admin',
 			element: (
 				<>
-					<div>
-						<p>Admin Layout</p>
-						<Provider store={adminStore}>
-							<Outlet />
-						</Provider>
-					</div>
+					<AuthGuard>
+						<div>
+							<p>Admin Layout</p>
+							<Provider store={adminStore}>
+								<Outlet />
+							</Provider>
+						</div>
+					</AuthGuard>
 				</>
 			),
 			children: [
