@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+		"name": "P-1",
+		"price": 20,
+		"stock": 10
+    },
+    {
+        "id": 2,
+		"name": "P-2",
+		"price": 20,
+		"stock": 10
+    },
+    {
+        "id": 3,
+		"name": "P-3",
+		"price": 20,
+		"stock": 10
+    },
+    {
+        "id": 4,
+		"name": "P-4",
+		"price": 30,
+		"stock": 10
+    },
+    {
+        "id": 5,
+		"name": "P-5",
+		"price": 60,
+		"stock": 14
+    },
+    {
+        "id": 6,
+		"name": "P-6",
+		"price": 80,
+		"stock": 40
+    },
+    {
+        "id": 7,
+		"name": "P-5",
+		"price": 78,
+		"stock": 18
+    }
+]
