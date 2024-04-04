@@ -13,6 +13,7 @@ function App() {
 	const state = useSelector((state: RootState) => state.favoriteState);
 
 	useEffect(() => {
+		debugger;
 		console.log('load-server-state');
 		// SERVER da olan favorite bilgilerinin client state aktarılması.
 
