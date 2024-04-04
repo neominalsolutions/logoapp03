@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, Outlet, useRoutes } from 'react-router-dom';
 import ProductsPage from './pages/ProductsPage';
 import FavoriteProductsPage from './pages/FavoriteProductsPage';
-import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState, store } from './store/store';
 import { adminStore } from './store/adminStore';
 import AdminUserPage from './pages/admin/AdminUserPage';
+import { FavoriteFetch } from './store/features/FavoriteProductSlice';
 
 function App() {
-	return useRoutes([
+	const dispatch: AppDispatch = useDispatch();
+	const state = useSelector((state: RootState) => state.favoriteState);
+
+	useEffect(() => {
+		console.log('load-server-state');
+		// SERVER da olan favorite bilgilerinin client state aktarılması.
+
+		dispatch(FavoriteFetch());
+	}, []);
+
+	const routes = useRoutes([
 		{
 			path: '',
 			element: (
@@ -59,6 +70,13 @@ function App() {
 			],
 		},
 	]);
+
+	return (
+		<>
+			{routes}
+			{state.isLoading && <>... loading Server State</>}
+		</>
+	);
 }
 
 export default App;

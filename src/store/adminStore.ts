@@ -10,4 +10,4 @@ export const adminStore = configureStore({
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type AdminRootState = ReturnType<typeof adminStore.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof adminStore.dispatch;
+export type AppAdminDispatch = typeof adminStore.dispatch;
